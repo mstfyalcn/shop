@@ -1,10 +1,27 @@
 <app-nav></app-nav>
 <div class="row">
+    <div class="list-group">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a *ngIf="isLoggedin()==false" class="nav-link" routerLink="/login">
+                    <h4> Giriş Yap</h4>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a *ngIf="isLoggedin()==true" class="nav-link" (click)="logOut()">
+                    <h4> Çıkış yap</h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <div class="col-md-3">
         <app-category></app-category>
     </div>
     <div class="col-md-9">
-        <app-product></app-product>
+        <router-outlet></router-outlet>
     </div>
 
 </div>

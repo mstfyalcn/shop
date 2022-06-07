@@ -1,7 +1,8 @@
-<div class="conteiner">
-    <h3> Kategoriler </h3>
-    <div *ngFor="let category of category" class="list-group">
-        <a class="list-group-item">{{category.name | uppercase}}</a>
-    </div>
-
+<h3> Kategoriler </h3>
+<div class="list-group">
+    <a routerLink="product/" class="list-group-item">{{"Tüm Ürünler" |uppercase}}</a>
+    <a *ngFor="let category of categories" routerLink="product/category/{{category.id}}"
+        class="list-group-item">{{category.name | uppercase}}</a>
+    <a routerLink="product-add-1" class="btn-warning">Ürün Ekle/Klasik Form</a>
+    <a routerLink="product-add-2" class="btn-warning">Ürün Ekle/Reactive Form</a>
 </div>

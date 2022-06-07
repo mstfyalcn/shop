@@ -1,9 +1,9 @@
-<h3 *ngIf="product ; else : noProduct"> {{title}}</h3>
+<h3 > {{title}}</h3>
 <form>
     <div class="form-group">
 
         <input class="form-control" id="productName" placeholder="Ara..." [(ngModel)]="filterText" />
-        <div id="productName" class="form-text"> Aradığınız ifade {{filterText}}</div>
+        <div id="productName" class="form-text" *ngIf="filterText"> Aradığınız ifade {{filterText}}</div>
     </div>
     <ng-template #noProduct>
         <div class="alert alert-primary" role="alert">
@@ -11,17 +11,18 @@
         </div>
     </ng-template>
     <div class="row">
-        <div *ngFor="let product of product | productFilter:filterText " class="card" style="width: 18rem;">
+        <div *ngFor="let product of products | productFilter:filterText " class="card" style="width: 18rem;">
 
             <img [src]="product.imageUrl" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
                 <p class="card-text">{{product.description}}</p>
-                <p>{{product.unitPrice |currency}}</p>
-                <a href="#" class="btn btn-warning">Tıkla git</a>
+                <p>{{product.unitPrice}}</p>
+                <a (click)="addToChart(product)" class="btn btn-warning">Sepete Ekle</a>
             </div>
 
 
         </div>
 
     </div>
+</form>
